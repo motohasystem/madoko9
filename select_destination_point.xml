@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Gather action="post_destination_point.php" timeout="30" numDigits="1">
+        <Say language="ja-JP">お手元の資料を元に目的地を番号で入力してください。</Say>
+    </Gather>
+    <Redirect method="GET">
+        /select_destination_point.xml
+    </Redirect>
+</Response>

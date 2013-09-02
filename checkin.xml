@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Gather action="post_checkin.php" timeout="30" numDigits="1">
+        <Say language="ja-JP">予約を確定させる場合は１を</Say>
+        <Say language="ja-JP">もう一度予約内容を聞きたい場合は2を</Say>
+        <Say language="ja-JP">最初から入力しなおす場合は3を</Say>
+        <Say language="ja-JP">入力してください。</Say>
+    </Gather>
+    <Redirect method="GET">
+        /checkin.xml
+    </Redirect>
+</Response>

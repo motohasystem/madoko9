@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Gather action="post_input_population.php" timeout="30" numDigits="1">
+        <Say language="ja-JP">乗車される人数を入力してください。</Say>
+    </Gather>
+    <Redirect method="GET">
+        /input_population.xml
+    </Redirect>
+</Response>

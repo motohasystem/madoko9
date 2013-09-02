@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Gather action="post_reservation_time.php" timeout="30" numDigits="1">
+        <Say language="ja-JP">配車を希望されるタイミングを次の中から選んでください。</Say>
+        <Say language="ja-JP">15分後の配車を希望される場合は1を</Say>
+        <Say language="ja-JP">30分後の配車を希望される場合は2を</Say>
+        <Say language="ja-JP">1時間後の配車を希望される場合は3を</Say>
+        <Say language="ja-JP">押してください。</Say>
+    </Gather>
+    <Redirect method="GET">
+        /input_reservation_time.xml
+    </Redirect>
+</Response>

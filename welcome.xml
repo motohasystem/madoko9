@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Gather action="usage.php" numDigits="1">
+        <Play>http://eventrickshaw.azurewebsites.net//audio/27goodmorningazuresky.wav</Play>
+        <Say language="ja-JP">いべんとりしゃーへ、ようこそ、</Say>
+        <Say language="ja-JP">使い方の説明をお聞きになるには１を、</Say>
+        <Say language="ja-JP">すぐにお使いになるには２を押してください。</Say>
+    </Gather>
+    <Redirect method="GET">
+        /select_start_point.xml
+    </Redirect>
+</Response>

@@ -1,0 +1,25 @@
+table {
+	border: 1px solid #CCC;
+	border-spacing: 1px;
+}
+
+th, td {
+	border: 1px solid #999;
+	text-align: center;
+}
+
+th {
+	background-color: #EAEAEA;
+}
+
+th.num, td.num {
+	width: 50px;
+}
+
+td.num input {
+	width: 40px;
+}
+
+thead th {
+	background-color: #CCC;
+}
