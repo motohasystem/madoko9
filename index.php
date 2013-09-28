@@ -59,6 +59,8 @@
 		global $data, $edit_id, $conv, $editable, $num_column, $to_date, $car_no;
 		
 		$rdata = array_reverse($data);
+
+		$crypt_td = getEncoder();
 		
 		if(isset($rdata) and !empty($rdata)) {
 			$tbl = '';
@@ -92,7 +94,7 @@
 							}
 							$tbl .= '</select></td>';
 						} elseif ($key === 'RESTEL') {
-							$tbl .= '<td class="telno' . $row['ID'] . '">' . ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) . '</td>';
+							$tbl .= '<td class="telno' . $row['ID'] . '">' . ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) . '<input type="hidden" id="'.$key.'" name="'.$key.'" value="'. base64_encode(mcrypt_generic($crypt_td, $row[$key])) . '" /></td>';
 						} else {
 							$tbl .= td($row[$key]);
 						}
@@ -115,8 +117,31 @@
 		} else {
 			print '<p>データがありません</p>';
 		}
+		closeEncoder($crypt_td);
 	}
 	
+
+	function getEncoder() {
+		//暗号化＆復号化キー
+		$crypt_key = md5(getenv("TWILIO_AUTH_TOKEN"));
+
+		//暗号化モジュール使用開始
+		$crypt_td  = mcrypt_module_open('des', '', 'ecb', '');
+		$crypt_key = substr($crypt_key, 0, mcrypt_enc_get_key_size($crypt_td));
+		$crypt_iv  = mcrypt_create_iv(mcrypt_enc_get_iv_size($crypt_td), MCRYPT_RAND);
+
+		//暗号化モジュール初期化
+		if (mcrypt_generic_init($crypt_td, $crypt_key, $crypt_iv) < 0) {
+		  exit('error.');
+		}
+		return $crypt_td;
+	}
+	function closeEncoder($td) {
+		//暗号化モジュール使用終了
+		mcrypt_generic_deinit($td);
+		mcrypt_module_close($td);
+	}
+
 	$data = readData($filename);
 	if (isset($_POST["set"])) {
 		unset($_POST["set"]);

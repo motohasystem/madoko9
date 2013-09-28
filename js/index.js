@@ -29,8 +29,9 @@ var sendsms = function(self) {
 	if (targ.val() == '0') {
 		alert('配車番号を選択してください。');
 	} else {
-		var tel_no = $("td.telno" + id).text();
-		alert(tel_no + 'にSMSメッセージを送信します。');
+		var tel_no = $("td.telno" + id + " :hidden").val(),
+		    tel_no_txt = $("td.telno" + id).text();
+		alert(tel_no_txt + 'にSMSメッセージを送信します。');
 		$.ajax({
 			type: 'POST',
 			url: './send_message.php',
@@ -44,7 +45,7 @@ var sendsms = function(self) {
 			},
 			error: function() {
 			},
-			timeout : 6000
+			timeout : 120000
 		});
 	}
 };
