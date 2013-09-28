@@ -92,7 +92,7 @@
 							}
 							$tbl .= '</select></td>';
 						} elseif ($key === 'RESTEL') {
-							$tbl .= '<td class="telno' . $row['ID'] . '">' . ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) . '</td>';
+							$tbl .= '<td class="telno' . $row['ID'] . '">' . strlen($row[$key])>4?substr($row[$key],-4,4):$row[$key] . '</td>';
 						} else {
 							$tbl .= td($row[$key]);
 						}
