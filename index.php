@@ -14,7 +14,6 @@
 		"PARTY"       => "人数"
 	);
 	$editable = array(
-		"RESTEL",
 		"TIME",
 		"CARNO",
 		"SENTTIME",
@@ -83,7 +82,11 @@
 						if (in_array($key, $editable)) {
 							$tbl .= '<input type="text" id="'.$key.'" name="'.$key.'" value="'.$row[$key].'" />';
 						} else {
+							if ($key === 'RESTEL') {
+								$tbl .= ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) ;
+							} else {
 							$tbl .= $row[$key] . '<input type="hidden" id="'.$key.'" name="'.$key.'" value="'.$row[$key].'" />';
+							}
 						}
 						$tbl .= '</td>';
 					} else {
@@ -94,7 +97,7 @@
 							}
 							$tbl .= '</select></td>';
 						} elseif ($key === 'RESTEL') {
-							$tbl .= '<td class="telno' . $row['ID'] . '">' . ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) . '<input type="hidden" id="'.$key.'" name="'.$key.'" value="'. base64_encode(mcrypt_generic($crypt_td, $row[$key])) . '" /></td>';
+							$tbl .= '<td class="telno' . $row['ID'] . '">' . ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) . '<input type="hidden" id="C_'.$key.'" name="C_'.$key.'" value="'. base64_encode(mcrypt_generic($crypt_td, $row[$key])) . '" /></td>';
 						} else {
 							$tbl .= td($row[$key]);
 						}
@@ -145,14 +148,21 @@
 	$data = readData($filename);
 	if (isset($_POST["set"])) {
 		unset($_POST["set"]);
-		$data[$_POST['ID']] = $_POST;
-		foreach ($data as $i => $row) {
+//		$data[$_POST['ID']] = $_POST;
+
+		$i = $_POST['ID'];
+		$row = $_POST;
+//		foreach ($data as $i => $row) {
 			foreach ($row as $k => $v) {
+			  if (in_array($k, $editable)) {
 				if (in_array($k, $to_date)) {
 					$data[$i][$k] = datetostr($v);
+				} else {
+					$data[$i][$k] = $v;
 				}
+			  }
 			}
-		}
+//		}
 		setData($filename, $data);
 	} elseif (isset($_GET["act"]) and $_GET["act"] === 'edit') {
 		$edit_id = $_GET["id"];
