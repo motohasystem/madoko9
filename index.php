@@ -93,7 +93,7 @@
 						if ($key === 'CARNO') {
 							$tbl .= '<td><select id="carno' . $row['ID'] . '">';
 							foreach ($car_no as $i => $c) {
-								$tbl .= '<option id="no" value="' . $i . '">' . $c . '</option>';
+								$tbl .= '<option id="no" value="' . $i . '"'.(((0+$row[$key])===(0+$i))?' selected ':'').'>' . $c . '</option>';
 							}
 							$tbl .= '</select></td>';
 						} elseif ($key === 'RESTEL') {
@@ -168,6 +168,7 @@
 		$edit_id = $_GET["id"];
 	} elseif (isset($_GET["act"]) and $_GET["act"] === 'sent') {
 		$data[$_GET['id']]['SENTTIME'] = date("YmdHis", time());
+		$data[$_GET['id']]['CARNO'] = $_GET['carno'];
 		setData($filename, $data);
 	}
 
@@ -182,7 +183,7 @@
 		<title>イベントリキシャー管理画面</title>
 		<link rel="stylesheet" href="./css/index.css" type="text/css" /> 
 		<script type="text/javascript" src="./js/lib/jquery-1.10.2.min.js" ></script>
-		<script type="text/javascript" src="./js/index.js" ></script>
+		<script type="text/javascript" src="./js/index.js?0" ></script>
 	</head>
 	<body>
 		<img src="./img/map.png" alt="地図" />

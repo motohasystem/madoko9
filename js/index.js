@@ -41,7 +41,7 @@ var sendsms = function(self) {
 			},
 			success: function( json ) {
 				alert('送信しました。');
-				location.href = getLocation(location.href) + "?act=sent&id=" + id;
+				location.href = getLocation(location.href) + "?act=sent&id=" + id + "&carno=" + targ.text();
 			},
 			error: function() {
 			},
