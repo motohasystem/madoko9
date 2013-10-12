@@ -180,7 +180,7 @@
 		<meta http-equiv="Content-Style-Type" content="text/css" />
 		<meta http-equiv="Content-Script-Type" content="text/javascript" />
 
-		<title>イベントリキシャー管理画面</title>
+		<title>まど子さんによる配車予約サービス</title>
 		<link rel="stylesheet" href="./css/index.css" type="text/css" /> 
 		<script type="text/javascript" src="./js/lib/jquery-1.10.2.min.js" ></script>
 		<script type="text/javascript" src="./js/index.js?0" ></script>
