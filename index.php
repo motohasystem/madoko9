@@ -2,6 +2,8 @@
 	require('./data.php');
 	require('./dom.php');
 
+	date_default_timezone_set('Asia/Tokyo');
+
 	$conv = array(
 		"ID"          => "ID",
 		"RESTEL"      => "予約者電話",

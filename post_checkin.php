@@ -3,6 +3,8 @@ define("HOSTNAME", "http://eventrickshaw.azurewebsites.net/");
 define("API_NAME", "erapi.php");
 $WAIT_TIME = array(0, 15, 30, 60);
 
+	date_default_timezone_set('Asia/Tokyo');
+
     header('Content-type: text/xml');
     echo '<?xml version="1.0" encoding="UTF-8"?>';
  
