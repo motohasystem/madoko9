@@ -53,6 +53,14 @@
 	function datetostr($from) {
 		return str_replace(array('/', ' ', ':'), '', $from);
 	}
+
+	function formattelnum($from) {
+		$to = "----";
+		if(strlen($from)>=5) {
+			$to = "0".substr($from,3,2)."-****-".substr($from,-4,4);
+		}
+		return $to;
+	}
 	
 	function drawData() {
 		global $data, $edit_id, $conv, $editable, $num_column, $to_date, $car_no;
@@ -83,7 +91,7 @@
 							$tbl .= '<input type="text" id="'.$key.'" name="'.$key.'" value="'.$row[$key].'" />';
 						} else {
 							if ($key === 'RESTEL') {
-								$tbl .= ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) ;
+								$tbl .= formattelnum($row[$key]) ;
 							} else {
 							$tbl .= $row[$key] . '<input type="hidden" id="'.$key.'" name="'.$key.'" value="'.$row[$key].'" />';
 							}
@@ -97,7 +105,7 @@
 							}
 							$tbl .= '</select></td>';
 						} elseif ($key === 'RESTEL') {
-							$tbl .= '<td class="telno' . $row['ID'] . '">' . ((strlen($row[$key])>4)?substr($row[$key],-4,4):$row[$key]) . '<input type="hidden" id="C_'.$key.'" name="C_'.$key.'" value="'. base64_encode(mcrypt_generic($crypt_td, $row[$key])) . '" /></td>';
+							$tbl .= '<td class="telno' . $row['ID'] . '">' . formattelnum($row[$key]) . '<input type="hidden" id="C_'.$key.'" name="C_'.$key.'" value="'. base64_encode(mcrypt_generic($crypt_td, $row[$key])) . '" /></td>';
 						} else {
 							$tbl .= td($row[$key]);
 						}
