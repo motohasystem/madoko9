@@ -1,0 +1,17 @@
+.red_telnum {
+	font-size : xx-large;
+	color : red;
+	font-weight : bold;
+}
+
+.anchor_middle {
+	font-size : x-large;
+	font-weight : bold;
+	text-align : center;
+	text-decoration : underline;
+}
+
+#socialbuttons div {
+  float: left;
+}
+

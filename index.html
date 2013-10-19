@@ -7,6 +7,11 @@
     <meta name="description" content="まど子「おまはん、どこ行きたいんえ？」 : 自動電話応答による乗り合い自動車の自動配車システム" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/madoko.css">
+
+<script src="js/lib/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/lib/jquery.socialbutton-1.9.1.min.js" type="text/javascript"></script>
+
 
     <title>まど子「おまはん、どこ行きたいんえ？」</title>
   </head>
@@ -18,13 +23,24 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/tenguyasiki/madoko9">View on GitHub</a>
 
-          <h1 id="project_title">まど子「おまはん、どこ行きたいんえ？」</h1>
+		<div id="madoko_face"><img src="images/thumb_madoko_face.jpg"/></div>
+          <h1 id="project_title">まど子さん<br/>「おまはん、どこ行きたいんえ？」</h1>
           <h2 id="project_tagline">自動電話応答による乗り合い自動車の自動配車システム</h2>
 
+		<div id="socialbuttons" class="clearfix">
+			<div class="twitter"></div>
+			<div class="google"></div>
+			<div class="hatena"></div>
+			<div class="facebook"></div>
+		</div>
+
+
+<!--
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/tenguyasiki/madoko9/zipball/master">Download this project as a .zip file</a>
               <a class="tar_download_link" href="https://github.com/tenguyasiki/madoko9/tarball/master">Download this project as a tar.gz file</a>
             </section>
+-->
         </header>
     </div>
 
@@ -32,9 +48,58 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a name="madoko9" class="anchor" href="#madoko9"><span class="octicon octicon-link"></span></a>madoko9</h1>
+<a name="madoko9" class="anchor" href="#madoko9"><span class="octicon octicon-link"></span></a>略称「おまどこ」とは</h1>
 
-<p>まど子さんによる自動配車システムです。自動電話応答によって、乗り合い自動車を自動配車します。</p>
+<p>クラウディアさん演じる「まど子さん」による自動配車システムです。電話をかけるとイベント地域を巡回している登録ドライバーが迎えに来てくれます。</p>
+
+<p>フライヤーに掲載している地図で現在位置を確認した上で、携帯電話から電話をかけていただき、希望する乗車場所と降車場所、人数、何分後に配車を希望するかをダイアルしてください。</p>
+
+<p>ご入力いただいた乗車希望をスタッフが確認した後に、速やかにSMSでご連絡いたします。</p>
+
+<p>※注：現在はデモ用にカスタマイズしたものを公開しています。SMSが届いても実際には来てくれませんのでご注意ください。</p>
+
+<div id="thumb_flyer">
+	<a href="flyer.html" target="_blank">
+		<img src="images/thumb_flyer.jpg"/>
+	</a>
+</div>
+
+<img border="0" src="images/bg_hr.png" alt="spacer"  />
+
+<h1><a name="howtouse" class="anchor" href="#madoko9"><span class="octicon octicon-link"></span></a>つかいかた</h1>
+
+<p>1. イベントで配布された（という体の）<a href="flyer.html" target="_blank"> フライヤー</a>を見ながら今いる場所と次に行きたい場所の番号を見つけます。</p>
+
+<p>2. 携帯電話から<span class="red_telnum">050-3154-0164</span> に電話をかけてください。</p>
+
+<p>3. まど子さんの音声案内に従って、移動経路の番号、乗車人数、配車希望時間をプッシュしてください。</p>
+
+<p>4. しばらくすると予約確認メール(SMS)が届きます。メール文面の配車予定時間をご確認ください。</p>
+
+<p></p>
+
+<img border="0" src="images/bg_hr.png" alt="spacer"  />
+
+<h1><a name="howtomanage" class="anchor" href="#madoko9"><span class="octicon octicon-link"></span></a>事務局側のつかいかた（管理画面）</h1>
+
+<p>1. ブラウザから管理画面にアクセスしてください。</p>
+
+<p class="anchor_middle"><a href="http://eventrickshaw.azurewebsites.net/">管理画面</a></p>
+
+<p>2. 新着順に並んでいる配車依頼を確認(②)し、配車可能な車をプルダウンから選択(③)します。</p>
+
+<p>3. 配車状況に応じて利用者に連絡する時刻を遅らせるなど、必要に応じて依頼内容を変更します。</p>
+
+<p>4. 「配車」ボタンを押すと配車情報が登録され、利用者にはSMSで連絡が飛びます。</p>
+
+<p>※注：管理画面もデモ用です。配車操作をするにはID / Passが必要です。</p>
+
+
+<img border="0" src="images/page_management.jpg"  />
+<p></p>
+
+<p></p>
+
       </section>
     </div>
 
@@ -43,10 +108,41 @@
       <footer class="inner">
         <p class="copyright">まど子「おまはん、どこ行きたいんえ？」 maintained by <a href="https://github.com/tenguyasiki">tenguyasiki</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+	<div id="footer_poweredby">
+		<img src="images/poweredby.jpg"/>
+	</div>
       </footer>
     </div>
 
     
 
   </body>
+
+<script type="text/javascript">
+  $(function() {
+    $("#socialbuttons .twitter").socialbutton("twitter", {
+      button : "horizontal",
+      text   : "まど子「おまはん、どこ行きたいんえ？」",
+      url    : "http://tenguyasiki.github.io/madoko9/",
+    }).width(95);
+
+    $("#socialbuttons .facebook").socialbutton("facebook_like", {
+      button : "button_count",
+      url    : "http://tenguyasiki.github.io/madoko9/",
+    }).width(110);
+
+    $("#socialbuttons .google").socialbutton("google_plusone", {
+      button : "medium",
+      url    : "http://tenguyasiki.github.io/madoko9/",
+      count  : true,
+    }).width(70);
+
+    $("#socialbuttons .hatena").socialbutton("hatena", {
+      button : "standard",
+      url    : "http://tenguyasiki.github.io/madoko9/",
+      title  : "まど子「おまはん、どこ行きたいんえ？」",
+    }).width(70);
+  });
+</script>
+
 </html>
