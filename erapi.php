@@ -20,6 +20,9 @@
 define("FILE_DIRNAME",  ".\\");	// データファイルディレクトリパス
 define("FILENAME",  "reservation.json");	// データファイル名
 
+define("HOSTNAME", "eventrickshaw.azurewebsites.net");
+define("API_NAME", "auto_asign.php");
+
 
 // ひとまずGETのみ
 if( !empty($_GET['rt']) ) {
@@ -53,7 +56,24 @@ else{
 $ret = json_encode( $result );
 echo $ret;
 
+kick_auto_asign($id); // 自動配車APIの呼び出し
+
 exit;
+
+//------------------------------
+function kick_auto_asign($id){
+	$params = array(
+		'id=' . $id
+	);
+		
+	$get_param = join("&", $params);
+	$request = "https://". getenv("OMADOKO_OPE_USER") . ":" . getenv("OMADOKO_OPE_PWD") . "@" . HOSTNAME . "/" . API_NAME . "?" . $get_param;
+
+	$result = file_get_contents($request);
+
+	return $result;
+}
+//------------------------------
 
 // 新規追加するIDを取得
 function _get_new_id($records){
