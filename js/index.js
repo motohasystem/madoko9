@@ -1,6 +1,6 @@
-var getMessage = function(no) {
-	var msg = "迎えの車、";
-	msg += no + "番で手配したけんちょっと待っとってな。";
+var getMessage = function(no,pos,wait) {
+	var msg = "迎えの車は、";
+	msg += no + "番が" + pos + "番地点に迎えに行くよう手配したけん、" + wait + "分ほど待っとってな。\n※デモのため実際には配車されません！";
 	return msg;
 }
 
@@ -26,6 +26,8 @@ var getLocation = function(location) {
 var sendsms = function(self) {
 	var id = self.attr("id").replace("sendsms", "");
 	var targ = $("select#carno" + id + " option:selected");
+	var s_pos = $("td#START" + id ).text(),
+	    w_tim = $("td#PICKUP_TIME" + id ).text();
 	if (targ.val() == '0') {
 		alert('配車番号を選択してください。');
 	} else {
@@ -37,7 +39,7 @@ var sendsms = function(self) {
 			url: './send_message.php',
 			data: {
 				To:tel_no,
-				Message:getMessage(targ.text())
+				Message:getMessage(targ.text(),s_pos,w_tim)
 			},
 			success: function( json ) {
 				alert('送信しました。');

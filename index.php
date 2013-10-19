@@ -109,7 +109,7 @@
 						} elseif ($key === 'RESTEL') {
 							$tbl .= '<td class="telno' . $row['ID'] . '">' . formattelnum($row[$key]) . '<input type="hidden" id="C_'.$key.'" name="C_'.$key.'" value="'. base64_encode(mcrypt_generic($crypt_td, $row[$key])) . '" /></td>';
 						} else {
-							$tbl .= td($row[$key]);
+							$tbl .= td($row[$key], array("id" => $key . $row['ID']));
 						}
 					}
 				}
@@ -193,7 +193,7 @@
 		<title>まど子さんによる配車予約サービス</title>
 		<link rel="stylesheet" href="./css/index.css" type="text/css" /> 
 		<script type="text/javascript" src="./js/lib/jquery-1.10.2.min.js" ></script>
-		<script type="text/javascript" src="./js/index.js?0" ></script>
+		<script type="text/javascript" src="./js/index.js?3" ></script>
 	</head>
 	<body>
 		<img src="./img/map.png" alt="地図" />
