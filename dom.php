@@ -3,8 +3,8 @@
 		return '<'.$tag.' '.$val.' />';
 	}
 	
-	function dtag($tag, $val) {
-		return '<'.$tag.'>'.$val.'</'.$tag.'>';
+	function dtag($tag, $val, $atr='') {
+		return '<'.$tag.' '.$atr.'>'.$val.'</'.$tag.'>';
 	}
 	
 	// Input
@@ -39,7 +39,7 @@
 			foreach ($param as $k => $v) {
 				$str .= $k . '="' . $v . '" ';
 			}
-			return dtag('th '.$str, $val);
+			return dtag('th', $val, $str);
 		} else {
 			return dtag('th', $val);
 		}
@@ -51,7 +51,7 @@
 			foreach ($param as $k => $v) {
 				$str .= $k . '="' . $v . '" ';
 			}
-			return dtag('td '.$str, $val);
+			return dtag('td', $val, $str);
 		} else {
 			return dtag('td', $val);
 		}
